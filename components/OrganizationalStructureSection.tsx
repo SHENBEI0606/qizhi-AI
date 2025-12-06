@@ -74,7 +74,8 @@ export const OrganizationalStructureSection: React.FC = () => {
 
         {/* --- Desktop Tree Lines Connector --- */}
         {/* This container sits between Root and the Grid to draw the horizontal bracket line */}
-        <div className="relative w-full max-w-[85%] mx-auto h-8 hidden lg:block mb-8">
+        {/* Adjusted width to 75% to better match the center points of the 4 columns */}
+        <div className="relative w-[75%] mx-auto h-8 hidden lg:block mb-8">
            {/* The horizontal line across all children */}
            <div className="absolute top-0 left-0 right-0 h-0.5 bg-slate-300 rounded-full"></div>
            
@@ -86,11 +87,6 @@ export const OrganizationalStructureSection: React.FC = () => {
           
           {structureData.map((dept, index) => {
             const styles = ThemeStyles[dept.theme];
-            
-            // Logic to position the vertical connecting lines on Desktop
-            // Index 0: Leftmost, line starts from center, goes up.
-            // We rely on the top horizontal bar being drawn by the parent container above.
-            // Here we just need the vertical line going UP from the card to that bar.
             
             return (
               <div key={index} className="flex flex-col relative group">
@@ -124,8 +120,6 @@ export const OrganizationalStructureSection: React.FC = () => {
                       {item}
                     </div>
                   ))}
-                  
-                  {/* Decorative faint dashed lines connecting items could go here if needed, but clean is better */}
                 </div>
               </div>
             );
